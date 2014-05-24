@@ -10,10 +10,23 @@
 
 @implementation TMAppDelegate
 
+@synthesize tabBarController;
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
+    TMTaskViewController *firstVC = [[TMTaskViewController alloc] initWithNibName:@"TMTaskViewController" bundle:nil];
+    TMSettingViewController *secondVC = [[TMSettingViewController alloc] initWithNibName:@"TMSettingViewController" bundle:nil];
+    
+    firstVC.tabBarItem.image = [UIImage imageNamed:@"22"];
+    
+    self.tabBarController = [[UITabBarController alloc] init];
+    self.tabBarController.viewControllers = [NSArray arrayWithObjects:firstVC, secondVC, nil];
+    
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:tabBarController];
+    self.window.rootViewController = nav;
+    
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     return YES;

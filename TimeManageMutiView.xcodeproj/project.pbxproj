@@ -19,6 +19,16 @@
 		8E4DD52F192F2CFC007573AE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E4DD517192F2CFC007573AE /* UIKit.framework */; };
 		8E4DD537192F2CFC007573AE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8E4DD535192F2CFC007573AE /* InfoPlist.strings */; };
 		8E4DD539192F2CFC007573AE /* TimeManageMutiViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E4DD538192F2CFC007573AE /* TimeManageMutiViewTests.m */; };
+		8E4DD54A192F36D0007573AE /* TMTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E4DD549192F36D0007573AE /* TMTaskViewController.m */; };
+		8E4DD54C192F36EE007573AE /* TMTaskViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E4DD54B192F36EE007573AE /* TMTaskViewController.xib */; };
+		8E4DD550192F373C007573AE /* TMItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E4DD54F192F373C007573AE /* TMItemCell.m */; };
+		8E4DD555192F375F007573AE /* JZSwipeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E4DD554192F375F007573AE /* JZSwipeCell.m */; };
+		8E4DD559192F3795007573AE /* TMDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E4DD557192F3795007573AE /* TMDetailViewController.m */; };
+		8E4DD55A192F3795007573AE /* TMDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E4DD558192F3795007573AE /* TMDetailViewController.xib */; };
+		8E4DD55E192F37FF007573AE /* TMSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E4DD55C192F37FF007573AE /* TMSettingViewController.m */; };
+		8E4DD55F192F37FF007573AE /* TMSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E4DD55D192F37FF007573AE /* TMSettingViewController.xib */; };
+		8E4DD562192F3C45007573AE /* tabItem2.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E4DD561192F3C45007573AE /* tabItem2.png */; };
+		8E6677FB1930A02F00551D13 /* READ.ME in Resources */ = {isa = PBXBuildFile; fileRef = 8E6677FA1930A02F00551D13 /* READ.ME */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +58,21 @@
 		8E4DD534192F2CFC007573AE /* TimeManageMutiViewTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TimeManageMutiViewTests-Info.plist"; sourceTree = "<group>"; };
 		8E4DD536192F2CFC007573AE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		8E4DD538192F2CFC007573AE /* TimeManageMutiViewTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TimeManageMutiViewTests.m; sourceTree = "<group>"; };
+		8E4DD548192F36D0007573AE /* TMTaskViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMTaskViewController.h; sourceTree = "<group>"; };
+		8E4DD549192F36D0007573AE /* TMTaskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMTaskViewController.m; sourceTree = "<group>"; };
+		8E4DD54B192F36EE007573AE /* TMTaskViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TMTaskViewController.xib; sourceTree = "<group>"; };
+		8E4DD54E192F373C007573AE /* TMItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMItemCell.h; sourceTree = "<group>"; };
+		8E4DD54F192F373C007573AE /* TMItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMItemCell.m; sourceTree = "<group>"; };
+		8E4DD553192F375F007573AE /* JZSwipeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JZSwipeCell.h; sourceTree = "<group>"; };
+		8E4DD554192F375F007573AE /* JZSwipeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JZSwipeCell.m; sourceTree = "<group>"; };
+		8E4DD556192F3795007573AE /* TMDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMDetailViewController.h; sourceTree = "<group>"; };
+		8E4DD557192F3795007573AE /* TMDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMDetailViewController.m; sourceTree = "<group>"; };
+		8E4DD558192F3795007573AE /* TMDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TMDetailViewController.xib; sourceTree = "<group>"; };
+		8E4DD55B192F37FF007573AE /* TMSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMSettingViewController.h; sourceTree = "<group>"; };
+		8E4DD55C192F37FF007573AE /* TMSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMSettingViewController.m; sourceTree = "<group>"; };
+		8E4DD55D192F37FF007573AE /* TMSettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TMSettingViewController.xib; sourceTree = "<group>"; };
+		8E4DD561192F3C45007573AE /* tabItem2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabItem2.png; sourceTree = "<group>"; };
+		8E6677FA1930A02F00551D13 /* READ.ME */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = READ.ME; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +102,7 @@
 		8E4DD507192F2CFC007573AE = {
 			isa = PBXGroup;
 			children = (
+				8E6677FA1930A02F00551D13 /* READ.ME */,
 				8E4DD519192F2CFC007573AE /* TimeManageMutiView */,
 				8E4DD532192F2CFC007573AE /* TimeManageMutiViewTests */,
 				8E4DD512192F2CFC007573AE /* Frameworks */,
@@ -107,6 +133,9 @@
 		8E4DD519192F2CFC007573AE /* TimeManageMutiView */ = {
 			isa = PBXGroup;
 			children = (
+				8E4DD551192F3749007573AE /* Lib */,
+				8E4DD54D192F372C007573AE /* Views */,
+				8E4DD542192F2D43007573AE /* Controllers */,
 				8E4DD522192F2CFC007573AE /* TMAppDelegate.h */,
 				8E4DD523192F2CFC007573AE /* TMAppDelegate.m */,
 				8E4DD525192F2CFC007573AE /* Images.xcassets */,
@@ -118,6 +147,7 @@
 		8E4DD51A192F2CFC007573AE /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				8E4DD560192F3C36007573AE /* Images */,
 				8E4DD51B192F2CFC007573AE /* TimeManageMutiView-Info.plist */,
 				8E4DD51C192F2CFC007573AE /* InfoPlist.strings */,
 				8E4DD51F192F2CFC007573AE /* main.m */,
@@ -142,6 +172,56 @@
 				8E4DD535192F2CFC007573AE /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		8E4DD542192F2D43007573AE /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				8E4DD548192F36D0007573AE /* TMTaskViewController.h */,
+				8E4DD549192F36D0007573AE /* TMTaskViewController.m */,
+				8E4DD54B192F36EE007573AE /* TMTaskViewController.xib */,
+				8E4DD556192F3795007573AE /* TMDetailViewController.h */,
+				8E4DD557192F3795007573AE /* TMDetailViewController.m */,
+				8E4DD558192F3795007573AE /* TMDetailViewController.xib */,
+				8E4DD55B192F37FF007573AE /* TMSettingViewController.h */,
+				8E4DD55C192F37FF007573AE /* TMSettingViewController.m */,
+				8E4DD55D192F37FF007573AE /* TMSettingViewController.xib */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		8E4DD54D192F372C007573AE /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8E4DD54E192F373C007573AE /* TMItemCell.h */,
+				8E4DD54F192F373C007573AE /* TMItemCell.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		8E4DD551192F3749007573AE /* Lib */ = {
+			isa = PBXGroup;
+			children = (
+				8E4DD552192F374E007573AE /* JZSwipeCell */,
+			);
+			name = Lib;
+			sourceTree = "<group>";
+		};
+		8E4DD552192F374E007573AE /* JZSwipeCell */ = {
+			isa = PBXGroup;
+			children = (
+				8E4DD553192F375F007573AE /* JZSwipeCell.h */,
+				8E4DD554192F375F007573AE /* JZSwipeCell.m */,
+			);
+			name = JZSwipeCell;
+			sourceTree = "<group>";
+		};
+		8E4DD560192F3C36007573AE /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				8E4DD561192F3C45007573AE /* tabItem2.png */,
+			);
+			name = Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -222,6 +302,11 @@
 			files = (
 				8E4DD51E192F2CFC007573AE /* InfoPlist.strings in Resources */,
 				8E4DD526192F2CFC007573AE /* Images.xcassets in Resources */,
+				8E4DD55F192F37FF007573AE /* TMSettingViewController.xib in Resources */,
+				8E4DD55A192F3795007573AE /* TMDetailViewController.xib in Resources */,
+				8E4DD54C192F36EE007573AE /* TMTaskViewController.xib in Resources */,
+				8E4DD562192F3C45007573AE /* tabItem2.png in Resources */,
+				8E6677FB1930A02F00551D13 /* READ.ME in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -240,8 +325,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E4DD559192F3795007573AE /* TMDetailViewController.m in Sources */,
+				8E4DD54A192F36D0007573AE /* TMTaskViewController.m in Sources */,
+				8E4DD555192F375F007573AE /* JZSwipeCell.m in Sources */,
 				8E4DD520192F2CFC007573AE /* main.m in Sources */,
 				8E4DD524192F2CFC007573AE /* TMAppDelegate.m in Sources */,
+				8E4DD55E192F37FF007573AE /* TMSettingViewController.m in Sources */,
+				8E4DD550192F373C007573AE /* TMItemCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -438,6 +528,7 @@
 				8E4DD53E192F2CFC007573AE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8E4DD53F192F2CFC007573AE /* Build configuration list for PBXNativeTarget "TimeManageMutiViewTests" */ = {
 			isa = XCConfigurationList;
@@ -446,6 +537,7 @@
 				8E4DD541192F2CFC007573AE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
