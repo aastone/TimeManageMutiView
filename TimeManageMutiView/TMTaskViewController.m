@@ -7,6 +7,8 @@
 //
 
 #import "TMTaskViewController.h"
+#import "RDVTabBarController.h"
+#import "RDVTabBarItem.h"
 
 @interface TMTaskViewController ()<UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
 {
@@ -31,6 +33,17 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    [[self rdv_tabBarItem] setBadgeValue:@"3"];
+    
+    if (self.rdv_tabBarController.tabBar.translucent) {
+        UIEdgeInsets inserts = UIEdgeInsetsMake(0,
+                                                0,
+                                                CGRectGetHeight(self.rdv_tabBarController.tabBar.frame),
+                                                0);
+        tableView.contentInset = inserts;
+        tableView.scrollIndicatorInsets = inserts;
+    }
+    
     //0
     itemContent = [NSMutableArray arrayWithObjects:@"20140327", nil];
     
@@ -52,7 +65,23 @@
 
     [self tableViewInit];
     [self addTapGesture];
-    
+}
+
+#pragma mark - TabBar Method
+
+- (NSUInteger)supportedInterfaceOrientations {
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+        return UIInterfaceOrientationMaskAll;
+    } else {
+        return UIInterfaceOrientationMaskPortrait;
+    }
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+        return YES;
+    }
+    return toInterfaceOrientation == UIInterfaceOrientationPortrait;
 }
 
 #pragma mark - TextField
@@ -244,6 +273,9 @@
     passData = [[NSString alloc] initWithFormat:@"%@",[itemContent objectAtIndex:(itemContent.count - 1 - indexPath.row)]];
 
     detailViewController.listArray = [[NSMutableArray alloc] initWithObjects:passData, nil];
+    
+    [[self rdv_tabBarController] setTabBarHidden:!self.rdv_tabBarController.tabBarHidden animated:YES];
+    
     [self.navigationController pushViewController:detailViewController animated:YES];
     
 }

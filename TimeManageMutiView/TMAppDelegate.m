@@ -7,30 +7,94 @@
 //
 
 #import "TMAppDelegate.h"
+#import "RDVTabBarController.h"
+#import "RDVTabBarItem.h"
 
 @implementation TMAppDelegate
-
-@synthesize tabBarController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-    TMTaskViewController *firstVC = [[TMTaskViewController alloc] initWithNibName:@"TMTaskViewController" bundle:nil];
-    TMSettingViewController *secondVC = [[TMSettingViewController alloc] initWithNibName:@"TMSettingViewController" bundle:nil];
-    
-    firstVC.tabBarItem.image = [UIImage imageNamed:@"22"];
-    
-    self.tabBarController = [[UITabBarController alloc] init];
-    self.tabBarController.viewControllers = [NSArray arrayWithObjects:firstVC, secondVC, nil];
-    
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:tabBarController];
-    self.window.rootViewController = nav;
     
     self.window.backgroundColor = [UIColor whiteColor];
+    [self setupViewControllers];
+    [self.window setRootViewController:self.viewController];
+    
     [self.window makeKeyAndVisible];
+    
+    [self customizeInterface];
     return YES;
 }
+
+- (void)setupViewControllers
+{
+    UIViewController *firstVC = [[TMTaskViewController alloc] initWithNibName:@"TMTaskViewController" bundle:nil];
+    UIViewController *firstNavController = [[UINavigationController alloc] initWithRootViewController:firstVC];
+    
+    UIViewController *secondVC = [[TMSettingViewController alloc] initWithNibName:@"TMSettingViewController" bundle:nil];
+    UIViewController *secondNavController = [[UINavigationController alloc] initWithRootViewController:secondVC];
+    
+    UIViewController *thirdVC = [[TMExploreViewController alloc] init];
+    UIViewController *thirdNavController = [[UINavigationController alloc] initWithRootViewController:thirdVC];
+    
+    RDVTabBarController *tabBarController = [[RDVTabBarController alloc] init];
+    [tabBarController setViewControllers:@[firstNavController, secondNavController, thirdNavController]];
+    self.viewController = tabBarController;
+    
+    [self customizeTabBarForController:tabBarController];
+}
+
+- (void)customizeTabBarForController:(RDVTabBarController *)tabBarController
+{
+    UIImage *finishedImage = [UIImage imageNamed:@"tabbar_selected_background"];
+    UIImage *unfinishedImage = [UIImage imageNamed:@"tabbar_normal_background"];
+    NSArray *tabBarItemImages = @[@"first", @"second", @"third"];
+    
+    NSInteger index = 0;
+    for (RDVTabBarItem *item in [[tabBarController tabBar] items]) {
+        [item setBackgroundSelectedImage:finishedImage withUnselectedImage:unfinishedImage];
+        UIImage *selectedimage = [UIImage imageNamed:[NSString stringWithFormat:@"%@_selected",
+                                                      [tabBarItemImages objectAtIndex:index]]];
+        UIImage *unselectedimage = [UIImage imageNamed:[NSString stringWithFormat:@"%@_normal",
+                                                        [tabBarItemImages objectAtIndex:index]]];
+        [item setFinishedSelectedImage:selectedimage withFinishedUnselectedImage:unselectedimage];
+        
+        index++;
+    }
+}
+
+- (void)customizeInterface {
+    UINavigationBar *navigationBarAppearance = [UINavigationBar appearance];
+    
+    UIImage *backgroundImage = nil;
+    NSDictionary *textAttributes = nil;
+    
+    if (NSFoundationVersionNumber > NSFoundationVersionNumber_iOS_6_1) {
+        backgroundImage = [UIImage imageNamed:@"navigationbar_background_tall"];
+        
+        textAttributes = @{
+                           NSFontAttributeName: [UIFont boldSystemFontOfSize:18],
+                           NSForegroundColorAttributeName: [UIColor blackColor],
+                           };
+    } else {
+#if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_7_0
+        backgroundImage = [UIImage imageNamed:@"navigationbar_background"];
+        
+        textAttributes = @{
+                           UITextAttributeFont: [UIFont boldSystemFontOfSize:18],
+                           UITextAttributeTextColor: [UIColor blackColor],
+                           UITextAttributeTextShadowColor: [UIColor clearColor],
+                           UITextAttributeTextShadowOffset: [NSValue valueWithUIOffset:UIOffsetZero],
+                           };
+#endif
+    }
+    
+    [navigationBarAppearance setBackgroundImage:backgroundImage
+                                  forBarMetrics:UIBarMetricsDefault];
+    [navigationBarAppearance setTitleTextAttributes:textAttributes];
+}
+
 
 - (void)applicationWillResignActive:(UIApplication *)application
 {

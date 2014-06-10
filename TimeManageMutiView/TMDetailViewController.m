@@ -7,6 +7,8 @@
 //
 
 #import "TMDetailViewController.h"
+#import "RDVTabBarController.h"
+#import "RDVTabBarItem.h"
 
 @interface TMDetailViewController () <UITextFieldDelegate>
 {
@@ -143,6 +145,11 @@
 {
     [textField resignFirstResponder];
     return YES;
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [[self rdv_tabBarController] setTabBarHidden:!self.rdv_tabBarController.tabBarHidden animated:YES];
 }
 
 

@@ -9,10 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "TMSettingViewController.h"
 #import "TMTaskViewController.h"
+#import "TMExploreViewController.h"
+#import "TMViewController.h"
 
 @interface TMAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+@property (strong, nonatomic) UIViewController *viewController;
 
 @property (strong, nonatomic) UITabBarController *tabBarController;
 
