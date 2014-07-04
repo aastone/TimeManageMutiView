@@ -17,8 +17,8 @@
     self = [super init];
     if (self) {
         itemTitle = [[NSMutableArray alloc] init];
-        itemCreateDate = [NSDate date];
-        NSLog(@"%@", itemCreateDate);
+        itemCreateDate = [[NSMutableArray alloc] init];
+        itemCreateTime = [[NSMutableArray alloc] init];
     }
     return self;
 }
@@ -27,6 +27,21 @@
 {
     [itemTitle addObject:itemT];
     [itemTitle writeToFile:fileName atomically:YES];
+    
+    // add Time
+    
+    NSDate *date = [NSDate date];
+    
+    NSDateFormatter *formatterDate = [[NSDateFormatter alloc] init];
+    NSDateFormatter *formatterTime = [[NSDateFormatter alloc] init];
+    [formatterDate setDateFormat:@"yyyy-MM-dd"];
+    [formatterTime setDateFormat:@"HH:mm:ss"];
+    
+    NSString *currentDate = [formatterDate stringFromDate:date];
+    NSString *currentTime = [formatterTime stringFromDate:date];
+    
+    [itemCreateDate addObject:currentDate];
+    [itemCreateTime addObject:currentTime];
     
 }
 

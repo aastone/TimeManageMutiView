@@ -12,14 +12,7 @@
 
 @synthesize minuteValue, secondValue, countdownValue;
 
-- (NSInteger)setCountDownValue:(BOOL)isCountingDown
-{
-    if (isCountingDown) {
-        return countdownValue;
-    }else{
-        return countdownValue;
-    }
-}
+
 
 
 

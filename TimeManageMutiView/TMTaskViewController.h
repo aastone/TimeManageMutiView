@@ -19,5 +19,4 @@
     TMItemModel *item;
 }
 
-@property (nonatomic, strong) NSString *rrrrr;
 @end

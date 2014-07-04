@@ -9,11 +9,10 @@
 #import "TMDetailViewController.h"
 #import "RDVTabBarController.h"
 #import "RDVTabBarItem.h"
+#import "TMTimeStore.h"
 
 @interface TMDetailViewController () <UITextFieldDelegate>
 {
-    NSInteger secondsCountDown;
-    NSInteger minutesCountDown;
     NSTimer *countDownTimer;
     BOOL buttonStatus;
     BOOL isCountingDown;
@@ -53,7 +52,7 @@
         if (buttonStatus) {
             [self.clickBtn setTitle:[NSString stringWithFormat:@"Pause"] forState:UIControlStateNormal];
             
-            if (secondsCountDown) {
+            if ([TMTimeStore sharedStore].secondCountDown) {
                 countDownTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(timeFireMethod) userInfo:nil repeats:YES];
             }else{
                 [self regexForTimeCount];
@@ -101,7 +100,7 @@
     if (buttonStatus) {
         [self.clickBtn setTitle:[NSString stringWithFormat:@"Pause"] forState:UIControlStateNormal];
         
-        if (secondsCountDown) {
+        if ([TMTimeStore sharedStore].secondCountDown) {
             countDownTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(timeFireMethod) userInfo:nil repeats:YES];
         }else{
             [self regexForTimeCount];
@@ -118,53 +117,41 @@
 - (IBAction)addMinute:(id)sender {
     if ([self.clickBtn.titleLabel.text isEqualToString:[NSString stringWithFormat:@"Start"]]) {
         [self regexForTimeCount];
-        minutesCountDown++;
-        self.timeCount.text = [NSString stringWithFormat:@"%ld min", (long)minutesCountDown];
+        [TMTimeStore sharedStore].minuteCountDown++;
+        self.timeCount.text = [NSString stringWithFormat:@"%ld min", (long)[[TMTimeStore sharedStore] minuteCountDown]];
     }
 }
 
 - (IBAction)reduceMinute:(id)sender {
     if ([self.clickBtn.titleLabel.text isEqualToString:[NSString stringWithFormat:@"Start"]]) {
         [self regexForTimeCount];
-        if (minutesCountDown != 1) {
-            minutesCountDown--;
+        if ([TMTimeStore sharedStore].minuteCountDown != 1) {
+            [TMTimeStore sharedStore].minuteCountDown--;
         }
-        self.timeCount.text = [NSString stringWithFormat:@"%ld min", (long)minutesCountDown];
+        self.timeCount.text = [NSString stringWithFormat:@"%ld min", (long)[TMTimeStore sharedStore].minuteCountDown];
     }
 }
 
 - (void)regexForTimeCount
 {
-    NSError *error;
-    
-    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"[0-9]+" options:0 error:&error];
-    
-    if (regex != nil) {
-        NSTextCheckingResult *firstMatch = [regex firstMatchInString:self.timeCount.text options:0 range:NSMakeRange(0, [self.timeCount.text length])];
-        if (firstMatch) {
-            NSRange resultRange = [firstMatch rangeAtIndex:0];
-            NSString *result = [self.timeCount.text substringWithRange:resultRange];
-            minutesCountDown = [result intValue];
-            secondsCountDown = minutesCountDown * 60;
-        }
-    }
+    [[TMTimeStore sharedStore] regexTimeCount:self.timeCount.text];
 }
 
 - (void)timeFireMethod
 {
-    secondsCountDown--;
-    if (secondsCountDown%60 == 0 && minutesCountDown > 1) {
-        minutesCountDown-- ;
+    [TMTimeStore sharedStore].secondCountDown--;
+    if ([TMTimeStore sharedStore].secondCountDown%60 == 0 && [TMTimeStore sharedStore].minuteCountDown > 1) {
+        [TMTimeStore sharedStore].minuteCountDown-- ;
     }
-    if (minutesCountDown >= 1) {
-        self.timeCount.text = [NSString stringWithFormat:@"%d min %d s", minutesCountDown - 1 , secondsCountDown%60];
+    if ([TMTimeStore sharedStore].minuteCountDown >= 1) {
+        self.timeCount.text = [NSString stringWithFormat:@"%d min %d s", [TMTimeStore sharedStore].minuteCountDown - 1 , [TMTimeStore sharedStore].secondCountDown%60];
     }else{
-        self.timeCount.text = [NSString stringWithFormat:@"%d min %d s", minutesCountDown, secondsCountDown%60];
+        self.timeCount.text = [NSString stringWithFormat:@"%d min %d s", [TMTimeStore sharedStore].minuteCountDown, [TMTimeStore sharedStore].secondCountDown%60];
     }
     self.timeCountValue = [NSMutableString stringWithString:self.timeCount.text];
     NSLog(@"正在倒计时：%@", self.timeCountValue);
     [self.delegate addItemViewController:self didFinishEnteringItem:self.timeCountValue];
-    if (secondsCountDown == 0) {
+    if ([TMTimeStore sharedStore].secondCountDown == 0) {
         NSLog(@"000%@", self.timeCountValue);
         [countDownTimer invalidate];
     }

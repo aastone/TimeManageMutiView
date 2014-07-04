@@ -14,21 +14,14 @@
 @interface TMTaskViewController ()<UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
 {
     UITableView *tableView;
-    
-    NSInteger itemCount; // cell count
-    NSInteger rowsInSection; //tableview 行数、数组长度 -- 可以删掉，用itemContent.count代替
-    
     NSString *filename; // plist 文件名
     UITextField *textField; // 输入框
-    NSMutableArray *itemStartTime;
     CGRect bounds;
 }
 
 @end
 
 @implementation TMTaskViewController
-
-@synthesize rrrrr;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -178,29 +171,13 @@
 
 #pragma mark - Add New Item
 
-- (void)addTimeLine
-{
-    NSDate *date = [NSDate date];
-    
-    NSDateFormatter *formatterDate = [[NSDateFormatter alloc] init];
-    NSDateFormatter *formatterTime = [[NSDateFormatter alloc] init];
-    [formatterDate setDateFormat:@"yyyy-MM-dd"];
-    [formatterTime setDateFormat:@"HH:mm:ss"];
-    
-    //    NSString *currentDate = [formatterDate stringFromDate:date];
-    NSString *currentTime = [formatterTime stringFromDate:date];
-    
-    [itemStartTime addObject:currentTime];
-    
-    itemCount++;
-}
-
 // 增加cell的内容，并将内容存到plist文件中
 
 - (void)addNewItem
 {
     [item addItem:textField.text ToFile:filename];
     [tableView reloadData];
+//    NSLog(@"%@--%@", [item itemCreateTime], [item itemTitle]);
 }
 
 #pragma mark - Init View

@@ -15,6 +15,6 @@
 @property (nonatomic) NSInteger minuteValue;
 @property (nonatomic) NSInteger secondValue;
 
-- (NSInteger)setCountDownValue:(BOOL)isCountingDown;
+- (void)setCountDownValue:(BOOL)isCountingDown;
 
 @end

@@ -11,9 +11,12 @@
 @interface TMItemModel : NSObject
 
 @property (nonatomic, strong) NSMutableArray *itemTitle;
-@property (nonatomic, strong) NSDate *itemCreateDate;
-@property (nonatomic, strong) NSMutableString *itemCreateTime;
+@property (nonatomic, strong) NSMutableArray *itemCreateDate;
+@property (nonatomic, strong) NSMutableArray *itemCreateTime;
 
+
+// 增加新的item 自动保存到plist文件中
 - (void)addItem:(NSString *)itemTitle ToFile:(NSString *)fileName;
+
 
 @end
