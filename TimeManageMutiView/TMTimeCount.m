@@ -12,17 +12,6 @@
 
 @synthesize minuteValue, secondValue, countdownValue;
 
-+ (TMTimeCount *)sharedInstance
-{
-    static dispatch_once_t onceToken;
-    static TMTimeCount *sSharedInstance;
-    
-    dispatch_once(&onceToken, ^{
-        sSharedInstance = [[TMTimeCount alloc] init];
-    });
-    return sSharedInstance;
-}
-
 - (NSInteger)setCountDownValue:(BOOL)isCountingDown
 {
     if (isCountingDown) {

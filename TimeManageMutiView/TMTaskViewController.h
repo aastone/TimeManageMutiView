@@ -8,12 +8,16 @@
 
 #import <UIKit/UIKit.h>
 #import "TMItemCell.h"
-//#import "TMItemModel.h"
 #import "TMDetailViewController.h"
+
+@class TMItemModel;
 
 @interface TMTaskViewController : UIViewController<JZSwipeCellDelegate, TMDetailViewControllerDelegate>
 {
     NSString *passData;
     NSString *passTime;
+    TMItemModel *item;
 }
+
+@property (nonatomic, strong) NSString *rrrrr;
 @end

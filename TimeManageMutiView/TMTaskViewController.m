@@ -9,13 +9,13 @@
 #import "TMTaskViewController.h"
 #import "RDVTabBarController.h"
 #import "RDVTabBarItem.h"
+#import "TMItemModel.h"
 
 @interface TMTaskViewController ()<UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
 {
     UITableView *tableView;
     
     NSInteger itemCount; // cell count
-    NSMutableArray *itemContent; // tableview cell 内容
     NSInteger rowsInSection; //tableview 行数、数组长度 -- 可以删掉，用itemContent.count代替
     
     NSString *filename; // plist 文件名
@@ -27,6 +27,8 @@
 @end
 
 @implementation TMTaskViewController
+
+@synthesize rrrrr;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -41,6 +43,8 @@
     
     bounds = [[UIScreen mainScreen] applicationFrame];
     
+    item = [[TMItemModel alloc] init];
+    
     //tabItem上的小数字
     [[self rdv_tabBarItem] setBadgeValue:@"3"];
     
@@ -54,7 +58,11 @@
     }
     
     //0
-    itemContent = [NSMutableArray arrayWithObjects:@"20140327", nil];
+    [item setItemTitle:[NSMutableArray arrayWithObject:@"jkjk"]];
+    
+    [[item itemTitle] addObject:@"dddd"];
+//    NSLog(@"%@", [item itemTitle]);
+    
     
     //plist
     
@@ -65,7 +73,7 @@
     NSMutableArray *plistArray = [NSMutableArray arrayWithContentsOfFile:filename];
     
     if (plistArray) {
-        itemContent = [NSMutableArray arrayWithArray:plistArray];
+        [item setItemTitle:[NSMutableArray arrayWithArray:plistArray]];
     }else{
         NSFileManager* fm = [NSFileManager defaultManager];
         [fm createFileAtPath:filename contents:nil attributes:nil];
@@ -188,17 +196,10 @@
 }
 
 // 增加cell的内容，并将内容存到plist文件中
-- (void)addItemContent
-{
-    [itemContent addObject:textField.text];
-    itemCount ++;
-    [itemContent writeToFile:filename atomically:YES];
-}
-
 
 - (void)addNewItem
 {
-    [self addItemContent];
+    [item addItem:textField.text ToFile:filename];
     [tableView reloadData];
 }
 
@@ -235,7 +236,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return itemContent.count;
+    return [[item itemTitle] count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)mtableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -246,7 +247,7 @@
         cell = [[TMItemCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
     
-    cell.textLabel.text = [NSString stringWithFormat:@"%@", itemContent[itemContent.count - indexPath.row - 1]];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@", [item itemTitle][[item itemTitle].count - indexPath.row - 1]];
     cell.delegate = self;
     return cell;
 }
@@ -266,7 +267,7 @@
 		NSIndexPath *indexPath = [tableView indexPathForCell:cell];
 		if (indexPath)
 		{
-			[itemContent removeObjectAtIndex:(itemContent.count - indexPath.row - 1)];
+			[[item itemTitle] removeObjectAtIndex:([item itemTitle].count - indexPath.row - 1)];
 			[tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
 		}
 	}
@@ -290,7 +291,7 @@
     detailViewController.delegate = self;
     detailViewController.title = @"Detail";
 
-    passData = [[NSString alloc] initWithFormat:@"%@",[itemContent objectAtIndex:(itemContent.count - 1 - indexPath.row)]];
+    passData = [[NSString alloc] initWithFormat:@"%@",[[item itemTitle] objectAtIndex:([item itemTitle].count - 1 - indexPath.row)]];
 
     detailViewController.listArray = [[NSMutableArray alloc] initWithObjects:passData, nil];
     if (passTime) {

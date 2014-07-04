@@ -62,6 +62,7 @@
 		8E4DD55E192F37FF007573AE /* TMSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E4DD55C192F37FF007573AE /* TMSettingViewController.m */; };
 		8E4DD55F192F37FF007573AE /* TMSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E4DD55D192F37FF007573AE /* TMSettingViewController.xib */; };
 		8E6677FB1930A02F00551D13 /* READ.ME in Resources */ = {isa = PBXBuildFile; fileRef = 8E6677FA1930A02F00551D13 /* READ.ME */; };
+		8E8ABD0B1966C4E700FC4BB0 /* TMItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E8ABD0A1966C4E700FC4BB0 /* TMItemModel.m */; };
 		8EEA0F941931D38800BFE975 /* TMExploreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EEA0F921931D38800BFE975 /* TMExploreViewController.m */; };
 		8EEA0F951931D38800BFE975 /* TMExploreViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8EEA0F931931D38800BFE975 /* TMExploreViewController.xib */; };
 /* End PBXBuildFile section */
@@ -146,6 +147,8 @@
 		8E4DD55C192F37FF007573AE /* TMSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMSettingViewController.m; sourceTree = "<group>"; };
 		8E4DD55D192F37FF007573AE /* TMSettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TMSettingViewController.xib; sourceTree = "<group>"; };
 		8E6677FA1930A02F00551D13 /* READ.ME */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = READ.ME; sourceTree = "<group>"; };
+		8E8ABD091966C4E700FC4BB0 /* TMItemModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMItemModel.h; sourceTree = "<group>"; };
+		8E8ABD0A1966C4E700FC4BB0 /* TMItemModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMItemModel.m; sourceTree = "<group>"; };
 		8EEA0F911931D38800BFE975 /* TMExploreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMExploreViewController.h; sourceTree = "<group>"; };
 		8EEA0F921931D38800BFE975 /* TMExploreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMExploreViewController.m; sourceTree = "<group>"; };
 		8EEA0F931931D38800BFE975 /* TMExploreViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TMExploreViewController.xib; sourceTree = "<group>"; };
@@ -232,6 +235,8 @@
 			children = (
 				8E0EE745194B1D6A0098E533 /* TMTimeCount.h */,
 				8E0EE746194B1D6A0098E533 /* TMTimeCount.m */,
+				8E8ABD091966C4E700FC4BB0 /* TMItemModel.h */,
+				8E8ABD0A1966C4E700FC4BB0 /* TMItemModel.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -519,6 +524,7 @@
 				8E4DD559192F3795007573AE /* TMDetailViewController.m in Sources */,
 				8E0EE6C21946AE1E0098E533 /* RDVTabBar.m in Sources */,
 				8E4DD54A192F36D0007573AE /* TMTaskViewController.m in Sources */,
+				8E8ABD0B1966C4E700FC4BB0 /* TMItemModel.m in Sources */,
 				8E4DD555192F375F007573AE /* JZSwipeCell.m in Sources */,
 				8EEA0F941931D38800BFE975 /* TMExploreViewController.m in Sources */,
 				8E0EE747194B1D6A0098E533 /* TMTimeCount.m in Sources */,
