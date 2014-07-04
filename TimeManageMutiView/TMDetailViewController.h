@@ -14,6 +14,8 @@
 
 - (void)addItemViewController: (TMDetailViewController *)controller didFinishEnteringItem:(NSString *)item;
 
+- (NSString *)sharedInfo;
+
 @end
 
 @interface TMDetailViewController : UIViewController
@@ -25,6 +27,7 @@
 @property (retain, nonatomic) NSMutableArray *listArray;
 
 @property (weak, nonatomic) IBOutlet UILabel *timeCount;
+@property (strong, nonatomic) NSMutableString *timeCountValue;
 
 @property (weak, nonatomic) IBOutlet UITextField *textField;
 @property (weak, nonatomic) IBOutlet UILabel *startTime;

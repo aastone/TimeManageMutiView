@@ -21,18 +21,27 @@
     NSString *filename; // plist 文件名
     UITextField *textField; // 输入框
     NSMutableArray *itemStartTime;
+    CGRect bounds;
 }
 
 @end
 
 @implementation TMTaskViewController
 
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self.title = @"Task";
+    return self;
+}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    bounds = [[UIScreen mainScreen] applicationFrame];
+    
+    //tabItem上的小数字
     [[self rdv_tabBarItem] setBadgeValue:@"3"];
     
     if (self.rdv_tabBarController.tabBar.translucent) {
@@ -51,7 +60,7 @@
     
     NSArray *paths=NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask,YES);
     NSString *path=[paths    objectAtIndex:0];
-    NSLog(@"path = %@",path);
+//    NSLog(@"path = %@",path);
     filename=[path stringByAppendingPathComponent:@"test.plist"];
     NSMutableArray *plistArray = [NSMutableArray arrayWithContentsOfFile:filename];
     
@@ -95,8 +104,9 @@
 
 - (void)viewTapped
 {
-    if (textField.frame.origin.y >65.0) {
+    if (textField.frame.origin.y > 0.001) {
         [textField resignFirstResponder];
+        tableView.frame =  CGRectMake(0, -35, bounds.size.width, bounds.size.height);
         [self textFieldInit];
     }
 }
@@ -106,14 +116,17 @@
     if (textField.frame.origin.y < -39.0) {
         [textField setText:nil];
         textField.placeholder = @"接下来要做的事";
-        textField.frame = CGRectMake(0, 66.0, 320, 44);
-    }else if(textField.frame.origin.y >65.0){
-        NSLog(@"%f",textField.frame.origin.y);
+        textField.frame = CGRectMake(0, 0.01, 320, 44);
+        tableView.frame = CGRectMake(0, 9, bounds.size.width, bounds.size.height);
+    }else if(textField.frame.origin.y > 0.001){
+//        NSLog(@"%f",textField.frame.origin.y);
         [textField setText:nil];
         textField.placeholder = @"接下来要做的事";
-        textField.frame = CGRectMake(0, -40.0, 320, 44);
+        textField.frame = CGRectMake(0, -60.0, 320, 44);
+        tableView.frame = CGRectMake(0, -35, bounds.size.width, bounds.size.height);
     }else{
-        textField = [[UITextField alloc] initWithFrame:CGRectMake(0, 66, 320, 44)];
+        textField = [[UITextField alloc] initWithFrame:CGRectMake(0, 0.01, 320, 44)];
+//        NSLog(@"-----+++++%f", textField.frame.origin.y);
         textField.borderStyle = UITextBorderStyleRoundedRect;
         textField.placeholder = @"接下来要做的事";
         [self.view addSubview:textField];
@@ -128,11 +141,11 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)atextField
 {
-    if (textField.frame.origin.y >65.0) {
-        [textField resignFirstResponder];
-        [self addNewItem];
-        [self textFieldInit];
-    }
+    [textField resignFirstResponder];
+    [self addNewItem];
+    [self textFieldInit];
+    tableView.frame =  CGRectMake(0, -35, bounds.size.width, bounds.size.height);
+    
     return YES;
 }
 
@@ -141,7 +154,6 @@
 
 - (void)scrollViewInit
 {
-    CGRect bounds = [[UIScreen mainScreen] applicationFrame];
     UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:bounds];
     scrollView.contentSize = self.view.frame.size;
     scrollView.delegate = self;
@@ -151,6 +163,7 @@
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
 {
     if (tableView.contentOffset.y < -30) {
+        tableView.frame =  CGRectMake(0, 9, bounds.size.width, bounds.size.height);
         [self textFieldInit];
     }
 }
@@ -193,16 +206,23 @@
 
 - (void)tableViewInit
 {
-    CGRect bounds = [[UIScreen mainScreen] applicationFrame];
-    //    NSLog(@"%f-%f-%f-%f",bounds.origin.x, bounds.origin.y, bounds.size.height, bounds.size.width);
-    tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, bounds.origin.y + 9.0, bounds.size.width, bounds.size.height) style:UITableViewStyleGrouped];
-    tableView.backgroundColor = [UIColor clearColor];
-    tableView.separatorColor = [UIColor colorWithWhite:1 alpha:0.2];
-    tableView.pagingEnabled = YES;
+//    NSLog(@"%f-%f-%f-%f",bounds.origin.x, bounds.origin.y, bounds.size.height, bounds.size.width);
+    tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, -35, bounds.size.width, bounds.size.height) style:UITableViewStyleGrouped];
+//    tableView.backgroundColor = [UIColor clearColor];
+//    tableView.separatorColor = [UIColor colorWithWhite:1 alpha:0.7];
+//    tableView.pagingEnabled = YES;
     tableView.delegate = self;
     tableView.dataSource = self;
     [self.view addSubview:tableView];
     
+}
+
+- (void)tableViewOriginChange
+{
+    tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 9, bounds.size.width, bounds.size.height) style:UITableViewStyleGrouped];
+    tableView.delegate = self;
+    tableView.dataSource = self;
+    [self.view addSubview:tableView];
 }
 
 #pragma mark - TableView Data Source
@@ -256,7 +276,7 @@
 - (void)swipeCell:(JZSwipeCell *)cell swipeTypeChangedFrom:(JZSwipeType)from to:(JZSwipeType)to
 {
 	// perform custom state changes here
-	NSLog(@"Swipe Changed From (%d) To (%d)", from, to);
+//	NSLog(@"Swipe Changed From (%d) To (%d)", from, to);
 }
 
 #pragma mark - Datail View
@@ -273,6 +293,10 @@
     passData = [[NSString alloc] initWithFormat:@"%@",[itemContent objectAtIndex:(itemContent.count - 1 - indexPath.row)]];
 
     detailViewController.listArray = [[NSMutableArray alloc] initWithObjects:passData, nil];
+    if (passTime) {
+        detailViewController.timeCountValue = [NSMutableString stringWithString:passTime];
+
+    }
     
     [[self rdv_tabBarController] setTabBarHidden:!self.rdv_tabBarController.tabBarHidden animated:YES];
     
@@ -283,6 +307,7 @@
 - (void)addItemViewController:(TMDetailViewController *)controller didFinishEnteringItem:(NSString *)item
 {
     NSLog(@"this will %@", item);
+    passTime = item;
 }
 
 

@@ -16,7 +16,10 @@
     NSInteger minutesCountDown;
     NSTimer *countDownTimer;
     BOOL buttonStatus;
+    BOOL isCountingDown;
     UITextField *ifield;
+    
+    NSString *aiyou;
 }
 
 @end
@@ -39,11 +42,36 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    NSString *itemToPassBack = @"pass back";
-    [self.delegate addItemViewController:self didFinishEnteringItem:itemToPassBack];
+//    NSString *itemToPassBack = @"pass back";
+//    [self.delegate addItemViewController:self didFinishEnteringItem:itemToPassBack];
+    
+    //判断是否在倒计时,需要告诉另外
+    
+    if (self.timeCountValue) {
+        self.timeCount.text = self.timeCountValue;
+        buttonStatus = YES;
+        if (buttonStatus) {
+            [self.clickBtn setTitle:[NSString stringWithFormat:@"Pause"] forState:UIControlStateNormal];
+            
+            if (secondsCountDown) {
+                countDownTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(timeFireMethod) userInfo:nil repeats:YES];
+            }else{
+                [self regexForTimeCount];
+                countDownTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(timeFireMethod) userInfo:nil repeats:YES];
+            }
+            buttonStatus = NO;
+        }
+    }else{
+        if (self.timeCountValue) {
+            self.timeCount.text = self.timeCountValue;
+        }else{
+            self.timeCount.text = @"1 min";
+            self.timeCountValue = [NSMutableString stringWithString:self.timeCount.text];
+        }
+    }
     
     // click action init
-    self.startTime.text = self.listArray[0];
+    self.startTime.text = self.listArray[0]; //label 上呈现的东西，名字可以改下~
     buttonStatus = YES;
     
     //textfield init
@@ -125,11 +153,19 @@
 - (void)timeFireMethod
 {
     secondsCountDown--;
-    if (secondsCountDown%60 == 0 && minutesCountDown != 1) {
+    if (secondsCountDown%60 == 0 && minutesCountDown > 1) {
         minutesCountDown-- ;
     }
-    self.timeCount.text = [NSString stringWithFormat:@"%d min %d s", minutesCountDown - 1 , secondsCountDown%60];
+    if (minutesCountDown >= 1) {
+        self.timeCount.text = [NSString stringWithFormat:@"%d min %d s", minutesCountDown - 1 , secondsCountDown%60];
+    }else{
+        self.timeCount.text = [NSString stringWithFormat:@"%d min %d s", minutesCountDown, secondsCountDown%60];
+    }
+    self.timeCountValue = [NSMutableString stringWithString:self.timeCount.text];
+    NSLog(@"正在倒计时：%@", self.timeCountValue);
+    [self.delegate addItemViewController:self didFinishEnteringItem:self.timeCountValue];
     if (secondsCountDown == 0) {
+        NSLog(@"000%@", self.timeCountValue);
         [countDownTimer invalidate];
     }
 }
@@ -150,6 +186,7 @@
 - (void)viewWillDisappear:(BOOL)animated
 {
     [[self rdv_tabBarController] setTabBarHidden:!self.rdv_tabBarController.tabBarHidden animated:YES];
+    [self.delegate addItemViewController:self didFinishEnteringItem:self.timeCountValue];
 }
 
 

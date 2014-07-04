@@ -14,5 +14,6 @@
 @interface TMTaskViewController : UIViewController<JZSwipeCellDelegate, TMDetailViewControllerDelegate>
 {
     NSString *passData;
+    NSString *passTime;
 }
 @end

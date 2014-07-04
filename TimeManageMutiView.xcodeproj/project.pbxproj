@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8E0EE68C19469D150098E533 /* TMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E0EE68A19469D150098E533 /* TMViewController.m */; };
-		8E0EE68D19469D150098E533 /* TMViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E0EE68B19469D150098E533 /* TMViewController.xib */; };
 		8E0EE6C11946AE1E0098E533 /* RDVTabBarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E0EE6BC1946AE1E0098E533 /* RDVTabBarItem.m */; };
 		8E0EE6C21946AE1E0098E533 /* RDVTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E0EE6BE1946AE1E0098E533 /* RDVTabBar.m */; };
 		8E0EE6C31946AE1E0098E533 /* RDVTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E0EE6C01946AE1E0098E533 /* RDVTabBarController.m */; };
@@ -36,6 +34,7 @@
 		8E0EE6F21946B36A0098E533 /* third_normal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E0EE6DE1946B36A0098E533 /* third_normal@2x.png */; };
 		8E0EE6F31946B36A0098E533 /* third_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E0EE6DF1946B36A0098E533 /* third_selected.png */; };
 		8E0EE6F41946B36A0098E533 /* third_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E0EE6E01946B36A0098E533 /* third_selected@2x.png */; };
+		8E0EE747194B1D6A0098E533 /* TMTimeCount.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E0EE746194B1D6A0098E533 /* TMTimeCount.m */; };
 		8E2E9072194180B100332249 /* mastercard@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E2E906D194180B100332249 /* mastercard@2x.png */; };
 		8E2E9073194180B100332249 /* paypal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E2E906E194180B100332249 /* paypal@2x.png */; };
 		8E2E9074194180B100332249 /* visa@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E2E906F194180B100332249 /* visa@2x.png */; };
@@ -62,7 +61,6 @@
 		8E4DD55A192F3795007573AE /* TMDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E4DD558192F3795007573AE /* TMDetailViewController.xib */; };
 		8E4DD55E192F37FF007573AE /* TMSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E4DD55C192F37FF007573AE /* TMSettingViewController.m */; };
 		8E4DD55F192F37FF007573AE /* TMSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E4DD55D192F37FF007573AE /* TMSettingViewController.xib */; };
-		8E4DD562192F3C45007573AE /* tabItem2.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E4DD561192F3C45007573AE /* tabItem2.png */; };
 		8E6677FB1930A02F00551D13 /* READ.ME in Resources */ = {isa = PBXBuildFile; fileRef = 8E6677FA1930A02F00551D13 /* READ.ME */; };
 		8EEA0F941931D38800BFE975 /* TMExploreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EEA0F921931D38800BFE975 /* TMExploreViewController.m */; };
 		8EEA0F951931D38800BFE975 /* TMExploreViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8EEA0F931931D38800BFE975 /* TMExploreViewController.xib */; };
@@ -79,9 +77,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		8E0EE68919469D150098E533 /* TMViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMViewController.h; sourceTree = "<group>"; };
-		8E0EE68A19469D150098E533 /* TMViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMViewController.m; sourceTree = "<group>"; };
-		8E0EE68B19469D150098E533 /* TMViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TMViewController.xib; sourceTree = "<group>"; };
 		8E0EE6BB1946AE1E0098E533 /* RDVTabBarItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDVTabBarItem.h; sourceTree = "<group>"; };
 		8E0EE6BC1946AE1E0098E533 /* RDVTabBarItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDVTabBarItem.m; sourceTree = "<group>"; };
 		8E0EE6BD1946AE1E0098E533 /* RDVTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDVTabBar.h; sourceTree = "<group>"; };
@@ -112,6 +107,9 @@
 		8E0EE6DE1946B36A0098E533 /* third_normal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "third_normal@2x.png"; sourceTree = "<group>"; };
 		8E0EE6DF1946B36A0098E533 /* third_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = third_selected.png; sourceTree = "<group>"; };
 		8E0EE6E01946B36A0098E533 /* third_selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "third_selected@2x.png"; sourceTree = "<group>"; };
+		8E0EE743194AF2410098E533 /* TMSharedInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TMSharedInfo.h; sourceTree = "<group>"; };
+		8E0EE745194B1D6A0098E533 /* TMTimeCount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMTimeCount.h; sourceTree = "<group>"; };
+		8E0EE746194B1D6A0098E533 /* TMTimeCount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMTimeCount.m; sourceTree = "<group>"; };
 		8E2E906D194180B100332249 /* mastercard@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mastercard@2x.png"; sourceTree = "<group>"; };
 		8E2E906E194180B100332249 /* paypal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "paypal@2x.png"; sourceTree = "<group>"; };
 		8E2E906F194180B100332249 /* visa@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "visa@2x.png"; sourceTree = "<group>"; };
@@ -147,7 +145,6 @@
 		8E4DD55B192F37FF007573AE /* TMSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMSettingViewController.h; sourceTree = "<group>"; };
 		8E4DD55C192F37FF007573AE /* TMSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMSettingViewController.m; sourceTree = "<group>"; };
 		8E4DD55D192F37FF007573AE /* TMSettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TMSettingViewController.xib; sourceTree = "<group>"; };
-		8E4DD561192F3C45007573AE /* tabItem2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabItem2.png; sourceTree = "<group>"; };
 		8E6677FA1930A02F00551D13 /* READ.ME */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = READ.ME; sourceTree = "<group>"; };
 		8EEA0F911931D38800BFE975 /* TMExploreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMExploreViewController.h; sourceTree = "<group>"; };
 		8EEA0F921931D38800BFE975 /* TMExploreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMExploreViewController.m; sourceTree = "<group>"; };
@@ -222,6 +219,23 @@
 			name = "tabbar images";
 			sourceTree = "<group>";
 		};
+		8E0EE742194AF2110098E533 /* common */ = {
+			isa = PBXGroup;
+			children = (
+				8E0EE743194AF2410098E533 /* TMSharedInfo.h */,
+			);
+			name = common;
+			sourceTree = "<group>";
+		};
+		8E0EE744194B1D410098E533 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8E0EE745194B1D6A0098E533 /* TMTimeCount.h */,
+				8E0EE746194B1D6A0098E533 /* TMTimeCount.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		8E2E906C1941808E00332249 /* titled items  */ = {
 			isa = PBXGroup;
 			children = (
@@ -237,6 +251,7 @@
 		8E4DD507192F2CFC007573AE = {
 			isa = PBXGroup;
 			children = (
+				8E4DD551192F3749007573AE /* Lib */,
 				8E6677FA1930A02F00551D13 /* READ.ME */,
 				8E4DD519192F2CFC007573AE /* TimeManageMutiView */,
 				8E4DD532192F2CFC007573AE /* TimeManageMutiViewTests */,
@@ -268,7 +283,8 @@
 		8E4DD519192F2CFC007573AE /* TimeManageMutiView */ = {
 			isa = PBXGroup;
 			children = (
-				8E4DD551192F3749007573AE /* Lib */,
+				8E0EE744194B1D410098E533 /* Model */,
+				8E0EE742194AF2110098E533 /* common */,
 				8E4DD54D192F372C007573AE /* Views */,
 				8E4DD542192F2D43007573AE /* Controllers */,
 				8E4DD522192F2CFC007573AE /* TMAppDelegate.h */,
@@ -324,9 +340,6 @@
 				8EEA0F911931D38800BFE975 /* TMExploreViewController.h */,
 				8EEA0F921931D38800BFE975 /* TMExploreViewController.m */,
 				8EEA0F931931D38800BFE975 /* TMExploreViewController.xib */,
-				8E0EE68919469D150098E533 /* TMViewController.h */,
-				8E0EE68A19469D150098E533 /* TMViewController.m */,
-				8E0EE68B19469D150098E533 /* TMViewController.xib */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -347,6 +360,7 @@
 				8E4DD552192F374E007573AE /* JZSwipeCell */,
 			);
 			name = Lib;
+			path = TimeManageMutiView;
 			sourceTree = "<group>";
 		};
 		8E4DD552192F374E007573AE /* JZSwipeCell */ = {
@@ -364,7 +378,6 @@
 				8E0EE6CC1946B34F0098E533 /* tabbar images */,
 				8E2E9077194180CE00332249 /* blurred_background.png */,
 				8E2E906C1941808E00332249 /* titled items  */,
-				8E4DD561192F3C45007573AE /* tabItem2.png */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -472,7 +485,6 @@
 				8E0EE6C91946AE2C0098E533 /* iPad-small.png in Resources */,
 				8E0EE6CA1946AE2C0098E533 /* iPhone.png in Resources */,
 				8E0EE6E61946B36A0098E533 /* navigationbar_background@2x.png in Resources */,
-				8E4DD562192F3C45007573AE /* tabItem2.png in Resources */,
 				8E2E9074194180B100332249 /* visa@2x.png in Resources */,
 				8E2E9075194180B100332249 /* wu@2x.png in Resources */,
 				8E0EE6E51946B36A0098E533 /* navigationbar_background.png in Resources */,
@@ -483,7 +495,6 @@
 				8E0EE6F41946B36A0098E533 /* third_selected@2x.png in Resources */,
 				8E0EE6C81946AE2C0098E533 /* iPad.png in Resources */,
 				8E0EE6E71946B36A0098E533 /* navigationbar_background_tall.png in Resources */,
-				8E0EE68D19469D150098E533 /* TMViewController.xib in Resources */,
 				8E6677FB1930A02F00551D13 /* READ.ME in Resources */,
 				8E0EE6EC1946B36A0098E533 /* second_selected@2x.png in Resources */,
 				8E0EE6E31946B36A0098E533 /* first_selected.png in Resources */,
@@ -510,8 +521,8 @@
 				8E4DD54A192F36D0007573AE /* TMTaskViewController.m in Sources */,
 				8E4DD555192F375F007573AE /* JZSwipeCell.m in Sources */,
 				8EEA0F941931D38800BFE975 /* TMExploreViewController.m in Sources */,
+				8E0EE747194B1D6A0098E533 /* TMTimeCount.m in Sources */,
 				8E4DD520192F2CFC007573AE /* main.m in Sources */,
-				8E0EE68C19469D150098E533 /* TMViewController.m in Sources */,
 				8E0EE6C11946AE1E0098E533 /* RDVTabBarItem.m in Sources */,
 				8E4DD524192F2CFC007573AE /* TMAppDelegate.m in Sources */,
 				8E4DD55E192F37FF007573AE /* TMSettingViewController.m in Sources */,
@@ -638,6 +649,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TimeManageMutiView/TimeManageMutiView-Prefix.pch";
 				INFOPLIST_FILE = "TimeManageMutiView/TimeManageMutiView-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
@@ -654,6 +666,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TimeManageMutiView/TimeManageMutiView-Prefix.pch";
 				INFOPLIST_FILE = "TimeManageMutiView/TimeManageMutiView-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;

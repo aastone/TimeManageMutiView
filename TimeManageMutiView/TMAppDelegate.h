@@ -10,7 +10,6 @@
 #import "TMSettingViewController.h"
 #import "TMTaskViewController.h"
 #import "TMExploreViewController.h"
-#import "TMViewController.h"
 
 @interface TMAppDelegate : UIResponder <UIApplicationDelegate>
 
