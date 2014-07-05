@@ -139,22 +139,9 @@
 
 - (void)timeFireMethod
 {
-    [TMTimeStore sharedStore].secondCountDown--;
-    if ([TMTimeStore sharedStore].secondCountDown%60 == 0 && [TMTimeStore sharedStore].minuteCountDown > 1) {
-        [TMTimeStore sharedStore].minuteCountDown-- ;
-    }
-    if ([TMTimeStore sharedStore].minuteCountDown >= 1) {
-        self.timeCount.text = [NSString stringWithFormat:@"%d min %d s", [TMTimeStore sharedStore].minuteCountDown - 1 , [TMTimeStore sharedStore].secondCountDown%60];
-    }else{
-        self.timeCount.text = [NSString stringWithFormat:@"%d min %d s", [TMTimeStore sharedStore].minuteCountDown, [TMTimeStore sharedStore].secondCountDown%60];
-    }
-    self.timeCountValue = [NSMutableString stringWithString:self.timeCount.text];
-    NSLog(@"正在倒计时：%@", self.timeCountValue);
+    self.timeCount.text = [NSString stringWithString:[[TMTimeStore sharedStore] timeFireMethod:self.timeCount.text With:countDownTimer]];
+    
     [self.delegate addItemViewController:self didFinishEnteringItem:self.timeCountValue];
-    if ([TMTimeStore sharedStore].secondCountDown == 0) {
-        NSLog(@"000%@", self.timeCountValue);
-        [countDownTimer invalidate];
-    }
 }
 
 #pragma mark - Text Field
@@ -172,9 +159,15 @@
 
 - (void)viewWillDisappear:(BOOL)animated
 {
+    UIAlertView *alterView = [[UIAlertView alloc] initWithTitle:@"Leave ?"
+                                                        message:@"are u sure?"
+                                                       delegate:self
+                                              cancelButtonTitle:@"NO"
+                                              otherButtonTitles:@"YES", nil];
+    [alterView show];
     [[self rdv_tabBarController] setTabBarHidden:!self.rdv_tabBarController.tabBarHidden animated:YES];
     [self.delegate addItemViewController:self didFinishEnteringItem:self.timeCountValue];
+    [countDownTimer invalidate];
 }
-
 
 @end

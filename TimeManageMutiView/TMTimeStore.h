@@ -18,6 +18,6 @@
 @property (nonatomic) NSInteger minuteCountDown;
 
 - (void)regexTimeCount:(NSString *)timeLabelValue;
-//- (void)timeFireMethod:
+- (NSString *)timeFireMethod:(NSString *)timeLabelValue With:(NSTimer *)timer;
 
 @end
