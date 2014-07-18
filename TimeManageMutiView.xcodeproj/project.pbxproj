@@ -34,7 +34,6 @@
 		8E0EE6F21946B36A0098E533 /* third_normal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E0EE6DE1946B36A0098E533 /* third_normal@2x.png */; };
 		8E0EE6F31946B36A0098E533 /* third_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E0EE6DF1946B36A0098E533 /* third_selected.png */; };
 		8E0EE6F41946B36A0098E533 /* third_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E0EE6E01946B36A0098E533 /* third_selected@2x.png */; };
-		8E0EE747194B1D6A0098E533 /* TMTimeCount.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E0EE746194B1D6A0098E533 /* TMTimeCount.m */; };
 		8E2E9072194180B100332249 /* mastercard@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E2E906D194180B100332249 /* mastercard@2x.png */; };
 		8E2E9073194180B100332249 /* paypal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E2E906E194180B100332249 /* paypal@2x.png */; };
 		8E2E9074194180B100332249 /* visa@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E2E906F194180B100332249 /* visa@2x.png */; };
@@ -64,6 +63,10 @@
 		8E6677FB1930A02F00551D13 /* READ.ME in Resources */ = {isa = PBXBuildFile; fileRef = 8E6677FA1930A02F00551D13 /* READ.ME */; };
 		8E8ABD0B1966C4E700FC4BB0 /* TMItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E8ABD0A1966C4E700FC4BB0 /* TMItemModel.m */; };
 		8E8ABD0E1967019E00FC4BB0 /* TMTimeStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E8ABD0D1967019E00FC4BB0 /* TMTimeStore.m */; };
+		8E8ABD18196AD5C000FC4BB0 /* AHKActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E8ABD11196AD5C000FC4BB0 /* AHKActionSheet.m */; };
+		8E8ABD19196AD5C000FC4BB0 /* AHKActionSheetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E8ABD13196AD5C000FC4BB0 /* AHKActionSheetViewController.m */; };
+		8E8ABD1A196AD5C000FC4BB0 /* UIImage+AHKAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E8ABD15196AD5C000FC4BB0 /* UIImage+AHKAdditions.m */; };
+		8E8ABD1B196AD5C000FC4BB0 /* UIWindow+AHKAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E8ABD17196AD5C000FC4BB0 /* UIWindow+AHKAdditions.m */; };
 		8EEA0F941931D38800BFE975 /* TMExploreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EEA0F921931D38800BFE975 /* TMExploreViewController.m */; };
 		8EEA0F951931D38800BFE975 /* TMExploreViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8EEA0F931931D38800BFE975 /* TMExploreViewController.xib */; };
 /* End PBXBuildFile section */
@@ -109,9 +112,6 @@
 		8E0EE6DE1946B36A0098E533 /* third_normal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "third_normal@2x.png"; sourceTree = "<group>"; };
 		8E0EE6DF1946B36A0098E533 /* third_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = third_selected.png; sourceTree = "<group>"; };
 		8E0EE6E01946B36A0098E533 /* third_selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "third_selected@2x.png"; sourceTree = "<group>"; };
-		8E0EE743194AF2410098E533 /* TMSharedInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TMSharedInfo.h; sourceTree = "<group>"; };
-		8E0EE745194B1D6A0098E533 /* TMTimeCount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMTimeCount.h; sourceTree = "<group>"; };
-		8E0EE746194B1D6A0098E533 /* TMTimeCount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMTimeCount.m; sourceTree = "<group>"; };
 		8E2E906D194180B100332249 /* mastercard@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mastercard@2x.png"; sourceTree = "<group>"; };
 		8E2E906E194180B100332249 /* paypal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "paypal@2x.png"; sourceTree = "<group>"; };
 		8E2E906F194180B100332249 /* visa@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "visa@2x.png"; sourceTree = "<group>"; };
@@ -152,6 +152,14 @@
 		8E8ABD0A1966C4E700FC4BB0 /* TMItemModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMItemModel.m; sourceTree = "<group>"; };
 		8E8ABD0C1967019E00FC4BB0 /* TMTimeStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMTimeStore.h; sourceTree = "<group>"; };
 		8E8ABD0D1967019E00FC4BB0 /* TMTimeStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMTimeStore.m; sourceTree = "<group>"; };
+		8E8ABD10196AD5C000FC4BB0 /* AHKActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHKActionSheet.h; sourceTree = "<group>"; };
+		8E8ABD11196AD5C000FC4BB0 /* AHKActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AHKActionSheet.m; sourceTree = "<group>"; };
+		8E8ABD12196AD5C000FC4BB0 /* AHKActionSheetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHKActionSheetViewController.h; sourceTree = "<group>"; };
+		8E8ABD13196AD5C000FC4BB0 /* AHKActionSheetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AHKActionSheetViewController.m; sourceTree = "<group>"; };
+		8E8ABD14196AD5C000FC4BB0 /* UIImage+AHKAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+AHKAdditions.h"; sourceTree = "<group>"; };
+		8E8ABD15196AD5C000FC4BB0 /* UIImage+AHKAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+AHKAdditions.m"; sourceTree = "<group>"; };
+		8E8ABD16196AD5C000FC4BB0 /* UIWindow+AHKAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+AHKAdditions.h"; sourceTree = "<group>"; };
+		8E8ABD17196AD5C000FC4BB0 /* UIWindow+AHKAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+AHKAdditions.m"; sourceTree = "<group>"; };
 		8EEA0F911931D38800BFE975 /* TMExploreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMExploreViewController.h; sourceTree = "<group>"; };
 		8EEA0F921931D38800BFE975 /* TMExploreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMExploreViewController.m; sourceTree = "<group>"; };
 		8EEA0F931931D38800BFE975 /* TMExploreViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TMExploreViewController.xib; sourceTree = "<group>"; };
@@ -228,7 +236,6 @@
 		8E0EE742194AF2110098E533 /* common */ = {
 			isa = PBXGroup;
 			children = (
-				8E0EE743194AF2410098E533 /* TMSharedInfo.h */,
 			);
 			name = common;
 			sourceTree = "<group>";
@@ -236,8 +243,6 @@
 		8E0EE744194B1D410098E533 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				8E0EE745194B1D6A0098E533 /* TMTimeCount.h */,
-				8E0EE746194B1D6A0098E533 /* TMTimeCount.m */,
 				8E8ABD091966C4E700FC4BB0 /* TMItemModel.h */,
 				8E8ABD0A1966C4E700FC4BB0 /* TMItemModel.m */,
 				8E8ABD0C1967019E00FC4BB0 /* TMTimeStore.h */,
@@ -366,6 +371,7 @@
 		8E4DD551192F3749007573AE /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				8E8ABD0F196AD59200FC4BB0 /* AHKActionSheet */,
 				8E0EE6BA1946ADF00098E533 /* RDVTabBar */,
 				8E4DD552192F374E007573AE /* JZSwipeCell */,
 			);
@@ -390,6 +396,21 @@
 				8E2E906C1941808E00332249 /* titled items  */,
 			);
 			name = Images;
+			sourceTree = "<group>";
+		};
+		8E8ABD0F196AD59200FC4BB0 /* AHKActionSheet */ = {
+			isa = PBXGroup;
+			children = (
+				8E8ABD10196AD5C000FC4BB0 /* AHKActionSheet.h */,
+				8E8ABD11196AD5C000FC4BB0 /* AHKActionSheet.m */,
+				8E8ABD12196AD5C000FC4BB0 /* AHKActionSheetViewController.h */,
+				8E8ABD13196AD5C000FC4BB0 /* AHKActionSheetViewController.m */,
+				8E8ABD14196AD5C000FC4BB0 /* UIImage+AHKAdditions.h */,
+				8E8ABD15196AD5C000FC4BB0 /* UIImage+AHKAdditions.m */,
+				8E8ABD16196AD5C000FC4BB0 /* UIWindow+AHKAdditions.h */,
+				8E8ABD17196AD5C000FC4BB0 /* UIWindow+AHKAdditions.m */,
+			);
+			name = AHKActionSheet;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -526,13 +547,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E8ABD1A196AD5C000FC4BB0 /* UIImage+AHKAdditions.m in Sources */,
 				8E4DD559192F3795007573AE /* TMDetailViewController.m in Sources */,
 				8E0EE6C21946AE1E0098E533 /* RDVTabBar.m in Sources */,
+				8E8ABD18196AD5C000FC4BB0 /* AHKActionSheet.m in Sources */,
+				8E8ABD19196AD5C000FC4BB0 /* AHKActionSheetViewController.m in Sources */,
+				8E8ABD1B196AD5C000FC4BB0 /* UIWindow+AHKAdditions.m in Sources */,
 				8E4DD54A192F36D0007573AE /* TMTaskViewController.m in Sources */,
 				8E8ABD0B1966C4E700FC4BB0 /* TMItemModel.m in Sources */,
 				8E4DD555192F375F007573AE /* JZSwipeCell.m in Sources */,
 				8EEA0F941931D38800BFE975 /* TMExploreViewController.m in Sources */,
-				8E0EE747194B1D6A0098E533 /* TMTimeCount.m in Sources */,
 				8E4DD520192F2CFC007573AE /* main.m in Sources */,
 				8E0EE6C11946AE1E0098E533 /* RDVTabBarItem.m in Sources */,
 				8E4DD524192F2CFC007573AE /* TMAppDelegate.m in Sources */,

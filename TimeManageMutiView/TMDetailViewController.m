@@ -10,15 +10,13 @@
 #import "RDVTabBarController.h"
 #import "RDVTabBarItem.h"
 #import "TMTimeStore.h"
+#import "TMItemModel.h"
+#import "AHKActionSheet.h"
 
-@interface TMDetailViewController () <UITextFieldDelegate>
+@interface TMDetailViewController () <UIAlertViewDelegate>
 {
     NSTimer *countDownTimer;
-    BOOL buttonStatus;
     BOOL isCountingDown;
-    UITextField *ifield;
-    
-    NSString *aiyou;
 }
 
 @end
@@ -41,44 +39,15 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-//    NSString *itemToPassBack = @"pass back";
-//    [self.delegate addItemViewController:self didFinishEnteringItem:itemToPassBack];
+    task = [[TMItemModel alloc] init];
     
-    //判断是否在倒计时,需要告诉另外
+    NSLog(@"-----%@", [task tmp]);
     
-    if (self.timeCountValue) {
-        self.timeCount.text = self.timeCountValue;
-        buttonStatus = YES;
-        if (buttonStatus) {
-            [self.clickBtn setTitle:[NSString stringWithFormat:@"Pause"] forState:UIControlStateNormal];
-            
-            if ([TMTimeStore sharedStore].secondCountDown) {
-                countDownTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(timeFireMethod) userInfo:nil repeats:YES];
-            }else{
-                [self regexForTimeCount];
-                countDownTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(timeFireMethod) userInfo:nil repeats:YES];
-            }
-            buttonStatus = NO;
-        }
-    }else{
-        if (self.timeCountValue) {
-            self.timeCount.text = self.timeCountValue;
-        }else{
-            self.timeCount.text = @"1 min";
-            self.timeCountValue = [NSMutableString stringWithString:self.timeCount.text];
-        }
-    }
+    self.timeCount.text = @"1 min";
+    self.timeCountValue = [NSMutableString stringWithString:self.timeCount.text];
     
-    // click action init
-    self.startTime.text = self.listArray[0]; //label 上呈现的东西，名字可以改下~
-    buttonStatus = YES;
-    
-    //textfield init
-    [self textFieldInit];
-    
-    UITapGestureRecognizer *tapGr = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(viewTapped)];
-    tapGr.cancelsTouchesInView = NO;
-    [self.view addGestureRecognizer:tapGr];
+    self.itemLabel.text = self.listArray[0]; //label 上呈现的东西，名字可以改下~
+    buttonStatus = TMClickButtonStatusUnStarted;
 }
 
 - (void)didReceiveMemoryWarning
@@ -87,30 +56,35 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - Tap Gesture
-
-- (void)viewTapped
-{
-    [self.textField resignFirstResponder];
-}
-
 #pragma mark - Click Action
 
 - (IBAction)clickAction:(id)sender {
-    if (buttonStatus) {
-        [self.clickBtn setTitle:[NSString stringWithFormat:@"Pause"] forState:UIControlStateNormal];
+    
+    if(buttonStatus == TMClickButtonStatusPaused){
+//        [[self navigationController] setNavigationBarHidden:NO animated:YES];
+        [self.clickBtn setTitle:[NSString stringWithFormat:@"Continue"] forState:UIControlStateNormal];
+        [countDownTimer invalidate];
+        buttonStatus = TMClickButtonStatusCounting;
+    }else if(buttonStatus == TMClickButtonStatusCompleted){
         
+    }else {
+        if (buttonStatus == TMClickButtonStatusUnStarted) {
+            [[self addMinuteButton] setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+            [[self reduceMinuteButton] setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+            [[self navigationController] setNavigationBarHidden:YES animated:YES];
+            
+            [[task taskStartTime] addObject:[NSMutableString stringWithString:[task currentTimeString]]];
+            self.startTimeLabel.text = [NSString stringWithString:[task taskStartTime][0]];
+        }
+        [self.clickBtn setTitle:[NSString stringWithFormat:@"Pause"] forState:UIControlStateNormal];
+            
         if ([TMTimeStore sharedStore].secondCountDown) {
             countDownTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(timeFireMethod) userInfo:nil repeats:YES];
         }else{
             [self regexForTimeCount];
             countDownTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(timeFireMethod) userInfo:nil repeats:YES];
         }
-        buttonStatus = NO;
-    }else{
-        [self.clickBtn setTitle:[NSString stringWithFormat:@"Continue"] forState:UIControlStateNormal];
-        [countDownTimer invalidate];
-        buttonStatus = YES;
+        buttonStatus = TMClickButtonStatusPaused;
     }
 }
 
@@ -140,34 +114,111 @@
 - (void)timeFireMethod
 {
     self.timeCount.text = [NSString stringWithString:[[TMTimeStore sharedStore] timeFireMethod:self.timeCount.text With:countDownTimer]];
+    NSLog(@"%@", self.timeCount.text);
+    if ([self.timeCount.text isEqualToString:@"0 min 0 s"]) {
+        buttonStatus = TMClickButtonStatusCompleted;
+        
+        [[task taskEndTime] addObject:[NSMutableString stringWithString:[task currentTimeString]]];
+        self.endTimeLabel.text = [NSString stringWithString:[task taskEndTime][0]];
+        
+        [self completedAction];
+        
+    }
     
     [self.delegate addItemViewController:self didFinishEnteringItem:self.timeCountValue];
 }
 
-#pragma mark - Text Field
-
-- (void)textFieldInit
-{
-    self.textField.delegate = self;
-}
-
-- (BOOL)textFieldShouldReturn:(UITextField *)textField
-{
-    [textField resignFirstResponder];
-    return YES;
-}
 
 - (void)viewWillDisappear:(BOOL)animated
 {
-    UIAlertView *alterView = [[UIAlertView alloc] initWithTitle:@"Leave ?"
-                                                        message:@"are u sure?"
-                                                       delegate:self
-                                              cancelButtonTitle:@"NO"
-                                              otherButtonTitles:@"YES", nil];
-    [alterView show];
     [[self rdv_tabBarController] setTabBarHidden:!self.rdv_tabBarController.tabBarHidden animated:YES];
     [self.delegate addItemViewController:self didFinishEnteringItem:self.timeCountValue];
     [countDownTimer invalidate];
 }
+
+#pragma mark - Alter View
+
+- (IBAction)dropTask:(id)sender
+{
+    UIAlertView *dropTaskAlterView = [[UIAlertView alloc] initWithTitle:@"Leave ?"
+                                                        message:@"are u sure?"
+                                                       delegate:self
+                                              cancelButtonTitle:@"NO"
+                                              otherButtonTitles:@"YES", nil];
+    [dropTaskAlterView show];
+}
+
+- (IBAction)keepLightOn:(id)sender
+{
+    [[UIApplication sharedApplication] setIdleTimerDisabled:YES];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 0) {
+        
+    }else {
+        [[self navigationController] setNavigationBarHidden:NO animated:NO];
+        [[self navigationController] popViewControllerAnimated:YES];
+    }
+}
+
+#pragma mark - Action Sheet
+
+- (void)completedAction
+{
+    AHKActionSheet *actionSheet = [[AHKActionSheet alloc] initWithTitle:NSLocalizedString(@"Controgulations! You completed your task!", nil)];
+    
+    [actionSheet addButtonWithTitle:NSLocalizedString(@"Redo", nil)
+                              image:[UIImage imageNamed:@"Icon1"]
+                               type:AHKActionSheetButtonTypeDefault
+                            handler:^(AHKActionSheet *as) {
+                                NSLog(@"Info tapped");
+                            }];
+    
+    [actionSheet addButtonWithTitle:NSLocalizedString(@"Back to Home", nil)
+                              image:[UIImage imageNamed:@"Icon2"]
+                               type:AHKActionSheetButtonTypeDefault
+                            handler:^(AHKActionSheet *as) {
+                                NSLog(@"Favorite tapped");
+                                [[self navigationController] setNavigationBarHidden:NO animated:NO];
+                                [[self navigationController] popViewControllerAnimated:YES];
+                            }];
+    
+//    [actionSheet addButtonWithTitle:NSLocalizedString(@"Share", nil)
+//                              image:[UIImage imageNamed:@"Icon3"]
+//                               type:AHKActionSheetButtonTypeDefault
+//                            handler:^(AHKActionSheet *as) {
+//                                NSLog(@"Share tapped");
+//                            }];
+//    
+//    [actionSheet addButtonWithTitle:NSLocalizedString(@"Delete", nil)
+//                              image:[UIImage imageNamed:@"Icon4"]
+//                               type:AHKActionSheetButtonTypeDestructive
+//                            handler:^(AHKActionSheet *as) {
+//                                NSLog(@"Delete tapped");
+//                            }];
+    
+    [actionSheet show];
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 @end

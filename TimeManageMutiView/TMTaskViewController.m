@@ -17,6 +17,7 @@
     NSString *filename; // plist 文件名
     UITextField *textField; // 输入框
     CGRect bounds;
+    NSMutableSet *sectionTitle;
 }
 
 @end
@@ -26,6 +27,7 @@
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self.title = @"Task";
+    item = [[TMItemModel alloc] init];
     return self;
 }
 
@@ -33,10 +35,15 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
+        
     bounds = [[UIScreen mainScreen] applicationFrame];
     
-    item = [[TMItemModel alloc] init];
+    [item setTmp:@"string"];
+    int gjhg = 22;
+    
+    NSArray *arrayww = [[NSArray alloc] initWithObjects:[NSNumber numberWithInt:gjhg],@"22", nil];
+    NSString *strww = [arrayww objectAtIndex:0];
+    NSLog(@"%@-----%d",arrayww ,[strww integerValue]);
     
     //tabItem上的小数字
     [[self rdv_tabBarItem] setBadgeValue:@"3"];
@@ -49,32 +56,12 @@
         tableView.contentInset = inserts;
         tableView.scrollIndicatorInsets = inserts;
     }
-    
-    //0
-    [item setItemTitle:[NSMutableArray arrayWithObject:@"jkjk"]];
-    
-    [[item itemTitle] addObject:@"dddd"];
-//    NSLog(@"%@", [item itemTitle]);
-    
-    
-    //plist
-    
-    NSArray *paths=NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask,YES);
-    NSString *path=[paths    objectAtIndex:0];
-//    NSLog(@"path = %@",path);
-    filename=[path stringByAppendingPathComponent:@"test.plist"];
-    NSMutableArray *plistArray = [NSMutableArray arrayWithContentsOfFile:filename];
-    
-    if (plistArray) {
-        [item setItemTitle:[NSMutableArray arrayWithArray:plistArray]];
-    }else{
-        NSFileManager* fm = [NSFileManager defaultManager];
-        [fm createFileAtPath:filename contents:nil attributes:nil];
-    }
-
 
     [self tableViewInit];
     [self addTapGesture];
+    
+    [self sectionMethod];
+    
 }
 
 #pragma mark - TabBar Method
@@ -107,7 +94,7 @@
 {
     if (textField.frame.origin.y > 0.001) {
         [textField resignFirstResponder];
-        tableView.frame =  CGRectMake(0, -35, bounds.size.width, bounds.size.height);
+        tableView.frame =  CGRectMake(0, -35, bounds.size.width, bounds.size.height - 20);
         [self textFieldInit];
     }
 }
@@ -118,13 +105,13 @@
         [textField setText:nil];
         textField.placeholder = @"接下来要做的事";
         textField.frame = CGRectMake(0, 0.01, 320, 44);
-        tableView.frame = CGRectMake(0, 9, bounds.size.width, bounds.size.height);
+        tableView.frame = CGRectMake(0, 9, bounds.size.width, bounds.size.height - 20);
     }else if(textField.frame.origin.y > 0.001){
 //        NSLog(@"%f",textField.frame.origin.y);
         [textField setText:nil];
         textField.placeholder = @"接下来要做的事";
         textField.frame = CGRectMake(0, -60.0, 320, 44);
-        tableView.frame = CGRectMake(0, -35, bounds.size.width, bounds.size.height);
+        tableView.frame = CGRectMake(0, -35, bounds.size.width, bounds.size.height - 20);
     }else{
         textField = [[UITextField alloc] initWithFrame:CGRectMake(0, 0.01, 320, 44)];
 //        NSLog(@"-----+++++%f", textField.frame.origin.y);
@@ -145,7 +132,7 @@
     [textField resignFirstResponder];
     [self addNewItem];
     [self textFieldInit];
-    tableView.frame =  CGRectMake(0, -35, bounds.size.width, bounds.size.height);
+    tableView.frame =  CGRectMake(0, -35, bounds.size.width, bounds.size.height - 20);
     
     return YES;
 }
@@ -164,7 +151,7 @@
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
 {
     if (tableView.contentOffset.y < -30) {
-        tableView.frame =  CGRectMake(0, 9, bounds.size.width, bounds.size.height);
+        tableView.frame =  CGRectMake(0, 9, bounds.size.width, bounds.size.height - 20);
         [self textFieldInit];
     }
 }
@@ -184,8 +171,8 @@
 
 - (void)tableViewInit
 {
-//    NSLog(@"%f-%f-%f-%f",bounds.origin.x, bounds.origin.y, bounds.size.height, bounds.size.width);
-    tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, -35, bounds.size.width, bounds.size.height) style:UITableViewStyleGrouped];
+//    NSLog(@"%f-%f-%f-%f",bounds.origin.x, bounds.origin.y, bounds.size.height - 20, bounds.size.width);
+    tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, -35, bounds.size.width, bounds.size.height - 20) style:UITableViewStyleGrouped];
 //    tableView.backgroundColor = [UIColor clearColor];
 //    tableView.separatorColor = [UIColor colorWithWhite:1 alpha:0.7];
 //    tableView.pagingEnabled = YES;
@@ -197,7 +184,7 @@
 
 - (void)tableViewOriginChange
 {
-    tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 9, bounds.size.width, bounds.size.height) style:UITableViewStyleGrouped];
+    tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 9, bounds.size.width, bounds.size.height - 20) style:UITableViewStyleGrouped];
     tableView.delegate = self;
     tableView.dataSource = self;
     [self.view addSubview:tableView];
@@ -207,13 +194,22 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning need-to-add-section function according date
-    return 1;
+    return [[item itemDate] count];
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    NSArray *sectionTitles = [[NSArray alloc] initWithArray:[[item itemDate] allObjects]];
+    return [sectionTitles objectAtIndex:section];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [[item itemTitle] count];
+//    NSInteger tmp = [[item countRowsArray][section] integerValue];
+    NSString *a = [[item countRowsArray] objectAtIndex:section];
+    NSLog(@"%@", a);
+    NSLog(@"%@",[item countRowsArray]);
+    return [a integerValue];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)mtableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -224,7 +220,7 @@
         cell = [[TMItemCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
     
-    cell.textLabel.text = [NSString stringWithFormat:@"%@", [item itemTitle][[item itemTitle].count - indexPath.row - 1]];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@", [[item itemsArray][[item itemsArray].count - indexPath.row - 1] valueForKey:@"itemTitle"]];
     cell.delegate = self;
     return cell;
 }
@@ -244,7 +240,7 @@
 		NSIndexPath *indexPath = [tableView indexPathForCell:cell];
 		if (indexPath)
 		{
-			[[item itemTitle] removeObjectAtIndex:([item itemTitle].count - indexPath.row - 1)];
+			[[[item itemsArray] valueForKey:@"itemTitle"]removeObjectAtIndex:([item itemsArray].count - indexPath.row - 1)];
 			[tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
 		}
 	}
@@ -268,7 +264,7 @@
     detailViewController.delegate = self;
     detailViewController.title = @"Detail";
 
-    passData = [[NSString alloc] initWithFormat:@"%@",[[item itemTitle] objectAtIndex:([item itemTitle].count - 1 - indexPath.row)]];
+    passData = [[NSString alloc] initWithFormat:@"%@",[[item itemsArray][[item itemsArray].count - indexPath.row - 1] valueForKey:@"itemTitle"]];
 
     detailViewController.listArray = [[NSMutableArray alloc] initWithObjects:passData, nil];
     if (passTime) {
@@ -282,20 +278,19 @@
     
 }
 
-- (void)addItemViewController:(TMDetailViewController *)controller didFinishEnteringItem:(NSString *)item
+- (void)addItemViewController:(TMDetailViewController *)controller didFinishEnteringItem:(NSString *)itemLocal
 {
-    NSLog(@"this will %@", item);
-    passTime = item;
+    NSLog(@"this will %@", itemLocal);
+    passTime = itemLocal;
 }
 
-
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+- (void)sectionMethod
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    sectionTitle = [[NSMutableSet alloc] init];
+    [sectionTitle addObjectsFromArray:[[item itemsArray] valueForKey:@"itemCreateDate"]];
+    
+    NSLog(@"sectionMethod %@", sectionTitle);
 }
+
 
 @end

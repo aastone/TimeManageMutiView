@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @class TMDetailViewController;
+@class TMItemModel;
 
-@protocol TMDetailViewControllerDelegate <NSObject>
+@protocol TMDetailViewControllerDelegate <NSObject, UINavigationControllerDelegate>
 
 - (void)addItemViewController: (TMDetailViewController *)controller didFinishEnteringItem:(NSString *)item;
 
@@ -18,7 +19,18 @@
 
 @end
 
+typedef enum{
+    TMClickButtonStatusUnStarted,
+    TMClickButtonStatusPaused,
+    TMClickButtonStatusCounting,
+    TMClickButtonStatusCompleted
+}TMClickButtonStatus;
+
 @interface TMDetailViewController : UIViewController
+{
+    TMItemModel *task;
+    TMClickButtonStatus buttonStatus;
+}
 
 @property (nonatomic) BOOL isSomethingEnabled;
 
@@ -29,11 +41,19 @@
 @property (weak, nonatomic) IBOutlet UILabel *timeCount;
 @property (strong, nonatomic) NSMutableString *timeCountValue;
 
-@property (weak, nonatomic) IBOutlet UITextField *textField;
-@property (weak, nonatomic) IBOutlet UILabel *startTime;
+@property (weak, nonatomic) IBOutlet UILabel *itemLabel;
 @property (weak, nonatomic) IBOutlet UIButton *clickBtn;
 - (IBAction)clickAction:(id)sender;
 
 - (IBAction)addMinute:(id)sender;
 - (IBAction)reduceMinute:(id)sender;
+
+@property (weak, nonatomic) IBOutlet UIButton *addMinuteButton;
+@property (weak, nonatomic) IBOutlet UIButton *reduceMinuteButton;
+- (IBAction)dropTask:(id)sender;
+- (IBAction)keepLightOn:(id)sender;
+
+@property (weak, nonatomic) IBOutlet UILabel *startTimeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *endTimeLabel;
+
 @end
