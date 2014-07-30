@@ -39,14 +39,9 @@
     bounds = [[UIScreen mainScreen] applicationFrame];
     
     [item setTmp:@"string"];
-    int gjhg = 22;
-    
-    NSArray *arrayww = [[NSArray alloc] initWithObjects:[NSNumber numberWithInt:gjhg],@"22", nil];
-    NSString *strww = [arrayww objectAtIndex:0];
-    NSLog(@"%@-----%d",arrayww ,[strww integerValue]);
     
     //tabItem上的小数字
-    [[self rdv_tabBarItem] setBadgeValue:@"3"];
+//    [[self rdv_tabBarItem] setBadgeValue:@"3"];
     
     if (self.rdv_tabBarController.tabBar.translucent) {
         UIEdgeInsets inserts = UIEdgeInsetsMake(0,
@@ -106,6 +101,7 @@
         textField.placeholder = @"接下来要做的事";
         textField.frame = CGRectMake(0, 0.01, 320, 44);
         tableView.frame = CGRectMake(0, 9, bounds.size.width, bounds.size.height - 20);
+        [textField becomeFirstResponder];
     }else if(textField.frame.origin.y > 0.001){
 //        NSLog(@"%f",textField.frame.origin.y);
         [textField setText:nil];
@@ -119,6 +115,7 @@
         textField.placeholder = @"接下来要做的事";
         [self.view addSubview:textField];
         textField.delegate = self;
+        [textField becomeFirstResponder];
     }
 }
 
