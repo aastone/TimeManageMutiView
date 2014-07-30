@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TMExploreViewController : UIViewController
+@interface TMExploreViewController : UIViewController<UIWebViewDelegate>
+
+
+@property (nonatomic, readonly) UIWebView *webView;
 
 @end
