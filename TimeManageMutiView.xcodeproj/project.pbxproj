@@ -67,6 +67,7 @@
 		8E8ABD19196AD5C000FC4BB0 /* AHKActionSheetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E8ABD13196AD5C000FC4BB0 /* AHKActionSheetViewController.m */; };
 		8E8ABD1A196AD5C000FC4BB0 /* UIImage+AHKAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E8ABD15196AD5C000FC4BB0 /* UIImage+AHKAdditions.m */; };
 		8E8ABD1B196AD5C000FC4BB0 /* UIWindow+AHKAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E8ABD17196AD5C000FC4BB0 /* UIWindow+AHKAdditions.m */; };
+		8EDD849D19ED5B400007AC96 /* TMCommonDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EDD849C19ED5B400007AC96 /* TMCommonDelegate.m */; };
 		8EEA0F941931D38800BFE975 /* TMExploreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EEA0F921931D38800BFE975 /* TMExploreViewController.m */; };
 		8EEA0F951931D38800BFE975 /* TMExploreViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8EEA0F931931D38800BFE975 /* TMExploreViewController.xib */; };
 /* End PBXBuildFile section */
@@ -160,6 +161,8 @@
 		8E8ABD15196AD5C000FC4BB0 /* UIImage+AHKAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+AHKAdditions.m"; sourceTree = "<group>"; };
 		8E8ABD16196AD5C000FC4BB0 /* UIWindow+AHKAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+AHKAdditions.h"; sourceTree = "<group>"; };
 		8E8ABD17196AD5C000FC4BB0 /* UIWindow+AHKAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+AHKAdditions.m"; sourceTree = "<group>"; };
+		8EDD849B19ED5B400007AC96 /* TMCommonDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMCommonDelegate.h; sourceTree = "<group>"; };
+		8EDD849C19ED5B400007AC96 /* TMCommonDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMCommonDelegate.m; sourceTree = "<group>"; };
 		8EEA0F911931D38800BFE975 /* TMExploreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMExploreViewController.h; sourceTree = "<group>"; };
 		8EEA0F921931D38800BFE975 /* TMExploreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMExploreViewController.m; sourceTree = "<group>"; };
 		8EEA0F931931D38800BFE975 /* TMExploreViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TMExploreViewController.xib; sourceTree = "<group>"; };
@@ -306,6 +309,8 @@
 				8E4DD523192F2CFC007573AE /* TMAppDelegate.m */,
 				8E4DD525192F2CFC007573AE /* Images.xcassets */,
 				8E4DD51A192F2CFC007573AE /* Supporting Files */,
+				8EDD849B19ED5B400007AC96 /* TMCommonDelegate.h */,
+				8EDD849C19ED5B400007AC96 /* TMCommonDelegate.m */,
 			);
 			path = TimeManageMutiView;
 			sourceTree = "<group>";
@@ -549,6 +554,7 @@
 			files = (
 				8E8ABD1A196AD5C000FC4BB0 /* UIImage+AHKAdditions.m in Sources */,
 				8E4DD559192F3795007573AE /* TMDetailViewController.m in Sources */,
+				8EDD849D19ED5B400007AC96 /* TMCommonDelegate.m in Sources */,
 				8E0EE6C21946AE1E0098E533 /* RDVTabBar.m in Sources */,
 				8E8ABD18196AD5C000FC4BB0 /* AHKActionSheet.m in Sources */,
 				8E8ABD19196AD5C000FC4BB0 /* AHKActionSheetViewController.m in Sources */,

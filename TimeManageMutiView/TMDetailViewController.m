@@ -43,7 +43,7 @@
     
     NSLog(@"-----%@", [task tmp]);
     
-    self.timeCount.text = @"1 min";
+    self.timeCount.text = @"5 min";
     self.timeCountValue = [NSMutableString stringWithString:self.timeCount.text];
     
     self.itemLabel.text = self.listArray[0]; //label 上呈现的东西，名字可以改下~
@@ -126,6 +126,7 @@
     }
     
     [self.delegate addItemViewController:self didFinishEnteringItem:self.timeCountValue];
+    [self.delegate sharedInfo];
 }
 
 
@@ -133,6 +134,7 @@
 {
     [[self rdv_tabBarController] setTabBarHidden:!self.rdv_tabBarController.tabBarHidden animated:YES];
     [self.delegate addItemViewController:self didFinishEnteringItem:self.timeCountValue];
+    [self.delegate sharedInfo];
     [countDownTimer invalidate];
 }
 

@@ -14,14 +14,14 @@
 
 @implementation TMSettingViewController
 
-@synthesize tableView;
+@synthesize tableView, delegate;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        self.title = @"Setting";
+        self.title = @"Account";
     }
     return self;
 }
@@ -57,7 +57,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 3;
+    return 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)mtableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -67,8 +67,18 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
-    cell.textLabel.text = @"kk";
+    if (indexPath.row == 0) {
+        cell.textLabel.text = @"Settings";
+    }else {
+        cell.textLabel.text = @"Login up | Sign in";
+    }
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSLog(@"before");
+    [self.delegate clicked:@"kkk"];
 }
 
 - (void)didReceiveMemoryWarning

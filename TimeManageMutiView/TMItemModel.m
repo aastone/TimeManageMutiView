@@ -44,9 +44,9 @@
             [fm createFileAtPath:fileName contents:nil attributes:nil];
         }
         
-        [self sectionMethod];
+//        [self sectionMethod];
         
-        [self rowsInSectionMethod];
+//        [self rowsInSectionMethod];
         
 //        itemsDictionary = [[NSMutableDictionary alloc] ini]
     }
@@ -141,6 +141,8 @@
     return fileName;
 }
 
+/*
+
 - (void)sectionMethod
 {
     itemDate = [[NSMutableSet alloc] init];
@@ -189,6 +191,8 @@
 {
     return countRowsArray;
 }
+
+*/
 
 
 

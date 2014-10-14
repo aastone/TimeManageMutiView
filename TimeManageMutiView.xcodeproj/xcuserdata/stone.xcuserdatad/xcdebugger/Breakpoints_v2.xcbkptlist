@@ -86,11 +86,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TimeManageMutiView/TMTaskViewController.m"
-            timestampString = "428380560.970218"
+            timestampString = "428381052.366335"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "162"
-            endingLineNumber = "162"
+            startingLineNumber = "167"
+            endingLineNumber = "167"
             landmarkName = "-addNewItem"
             landmarkType = "5">
          </BreakpointContent>
@@ -102,13 +102,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TimeManageMutiView/TMItemModel.m"
-            timestampString = "426655516.990818"
+            timestampString = "428387728.032879"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "153"
-            endingLineNumber = "153"
-            landmarkName = "-rowsInSectionMethod"
-            landmarkType = "5">
+            startingLineNumber = "155"
+            endingLineNumber = "155"
+            landmarkName = "@implementation TMItemModel"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -118,13 +118,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TimeManageMutiView/TMItemModel.m"
-            timestampString = "426655518.330829"
+            timestampString = "428387728.032879"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "154"
-            endingLineNumber = "154"
-            landmarkName = "-rowsInSectionMethod"
-            landmarkType = "5">
+            startingLineNumber = "156"
+            endingLineNumber = "156"
+            landmarkName = "@implementation TMItemModel"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -134,13 +134,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TimeManageMutiView/TMItemModel.m"
-            timestampString = "426667978.34202"
+            timestampString = "428387728.032879"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "173"
-            endingLineNumber = "173"
-            landmarkName = "-rowsInSectionMethod"
-            landmarkType = "5">
+            startingLineNumber = "175"
+            endingLineNumber = "175"
+            landmarkName = "@implementation TMItemModel"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -150,13 +150,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TimeManageMutiView/TMItemModel.m"
-            timestampString = "426667978.34202"
+            timestampString = "428387728.032879"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "190"
-            endingLineNumber = "190"
-            landmarkName = "-countRowsArray"
-            landmarkType = "5">
+            startingLineNumber = "192"
+            endingLineNumber = "192"
+            landmarkName = "@implementation TMItemModel"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -172,6 +172,38 @@
             startingLineNumber = "30"
             endingLineNumber = "30"
             landmarkName = "-initWithNibName:bundle:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TimeManageMutiView/TMSettingViewController.m"
+            timestampString = "434988957.798969"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "81"
+            endingLineNumber = "81"
+            landmarkName = "-tableView:didSelectRowAtIndexPath:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TimeManageMutiView/TMCommonDelegate.m"
+            timestampString = "434986509.941275"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "21"
+            endingLineNumber = "21"
+            landmarkName = "-clicked:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

@@ -39,6 +39,11 @@
     bounds = [[UIScreen mainScreen] applicationFrame];
     
     [item setTmp:@"string"];
+    int gjhg = 22;
+    
+    NSArray *arrayww = [[NSArray alloc] initWithObjects:[NSNumber numberWithInt:gjhg],@"22", nil];
+    NSString *strww = [arrayww objectAtIndex:0];
+    NSLog(@"%@-----%d",arrayww ,[strww integerValue]);
     
     //tabItem上的小数字
 //    [[self rdv_tabBarItem] setBadgeValue:@"3"];
@@ -55,7 +60,7 @@
     [self tableViewInit];
     [self addTapGesture];
     
-    [self sectionMethod];
+//    [self sectionMethod];
     
 }
 
@@ -98,21 +103,21 @@
 {
     if (textField.frame.origin.y < -39.0) {
         [textField setText:nil];
-        textField.placeholder = @"接下来要做的事";
+        textField.placeholder = @"What's the next thing to do?";
         textField.frame = CGRectMake(0, 0.01, 320, 44);
         tableView.frame = CGRectMake(0, 9, bounds.size.width, bounds.size.height - 20);
         [textField becomeFirstResponder];
     }else if(textField.frame.origin.y > 0.001){
 //        NSLog(@"%f",textField.frame.origin.y);
         [textField setText:nil];
-        textField.placeholder = @"接下来要做的事";
+        textField.placeholder = @"What's the next thing to do?";
         textField.frame = CGRectMake(0, -60.0, 320, 44);
         tableView.frame = CGRectMake(0, -35, bounds.size.width, bounds.size.height - 20);
     }else{
         textField = [[UITextField alloc] initWithFrame:CGRectMake(0, 0.01, 320, 44)];
 //        NSLog(@"-----+++++%f", textField.frame.origin.y);
         textField.borderStyle = UITextBorderStyleRoundedRect;
-        textField.placeholder = @"接下来要做的事";
+        textField.placeholder = @"What's the next thing to do?";
         [self.view addSubview:textField];
         textField.delegate = self;
         [textField becomeFirstResponder];
@@ -191,22 +196,25 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return [[item itemDate] count];
+//    return [[item itemDate] count];
+    return 1;
 }
 
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
-{
-    NSArray *sectionTitles = [[NSArray alloc] initWithArray:[[item itemDate] allObjects]];
-    return [sectionTitles objectAtIndex:section];
-}
+//- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+//{
+//    NSArray *sectionTitles = [[NSArray alloc] initWithArray:[[item itemDate] allObjects]];
+//    return [sectionTitles objectAtIndex:section];
+//}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-//    NSInteger tmp = [[item countRowsArray][section] integerValue];
-    NSString *a = [[item countRowsArray] objectAtIndex:section];
-    NSLog(@"%@", a);
-    NSLog(@"%@",[item countRowsArray]);
-    return [a integerValue];
+////    NSInteger tmp = [[item countRowsArray][section] integerValue];
+//    NSString *a = [[item countRowsArray] objectAtIndex:section];
+//    NSLog(@"%@", a);
+//    NSLog(@"%@",[item countRowsArray]);
+//    return [a integerValue];
+    NSLog(@"%d", [[item itemsArray] count]);
+    return [[item itemsArray] count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)mtableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -281,13 +289,19 @@
     passTime = itemLocal;
 }
 
-- (void)sectionMethod
+- (NSString *)sharedInfo
 {
-    sectionTitle = [[NSMutableSet alloc] init];
-    [sectionTitle addObjectsFromArray:[[item itemsArray] valueForKey:@"itemCreateDate"]];
-    
-    NSLog(@"sectionMethod %@", sectionTitle);
+    NSLog(@"sssssss");
+    return nil;
 }
+
+//- (void)sectionMethod
+//{
+//    sectionTitle = [[NSMutableSet alloc] init];
+//    [sectionTitle addObjectsFromArray:[[item itemsArray] valueForKey:@"itemCreateDate"]];
+//    
+//    NSLog(@"sectionMethod %@", sectionTitle);
+//}
 
 
 @end

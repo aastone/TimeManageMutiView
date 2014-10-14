@@ -8,7 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol TMSettingViewControllerDelegate <NSObject>
+
+- (void)clicked:(NSString *)value;
+
+@end
+
 @interface TMSettingViewController : UIViewController
+
+@property (nonatomic, weak) id <TMSettingViewControllerDelegate> delegate;
 
 @property (nonatomic, strong) UITableView *tableView;
 

@@ -42,16 +42,29 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-//    NSURL *url = [NSURL URLWithString:@"http://www.baidu.com"];
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"advice" ofType:@"html"];
-    NSURL *url = [NSURL fileURLWithPath:path];
+    NSURL *url = [NSURL URLWithString:@"http://sasoriforstone.sinaapp.com/"];
+//    NSString *path = [[NSBundle mainBundle] pathForResource:@"advice" ofType:@"html"];
+//    NSURL *url = [NSURL fileURLWithPath:path];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     
     [self.webView loadRequest:request];
     
-    
-    
-    
+    self.webView.delegate = self;
+}
+
+- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
+{
+//    NSLog(@"error");
+}
+
+- (void)webViewDidStartLoad:(UIWebView *)webView
+{
+    NSLog(@"start");
+}
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView
+{
+    NSLog(@"finish");
 }
 
 @end
